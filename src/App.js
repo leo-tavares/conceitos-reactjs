@@ -14,7 +14,11 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const { data: newRepositorie } = await api.post("repositories", {
+      title: `Awesome App ${Date.now()}`,
+      techs: ["React-Native", "NodeJs"],
+    });
+    setRepositores((repositories) => [...repositories, newRepositorie]);
   }
 
   async function handleRemoveRepository(id) {
